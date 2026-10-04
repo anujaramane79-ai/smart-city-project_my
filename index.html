@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Smart City</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            🌱 Smart City
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a href="index.html" style="color: var(--sage-dark); font-weight: 700;">Dashboard</a>
+            </li>
+            <li>
+                <a href="site-setup.html">Site Setup</a>
+            </li>
+            <li>
+                <a href="analysis.html">Analysis</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Smart City Planning & Design Hub</h1>
+        <p>
+            An integrated site planning platform combining real-time infrastructure geospatial queries, cost estimation, sustainability scoring, disaster simulation, and Autodesk Forma integration.
+        </p>
+        <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+            <a href="site-setup.html" class="btn btn-primary">🏗️ Setup New Site</a>
+            <a href="analysis.html" class="btn btn-secondary">🧠 Open Full Analysis</a>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Container -->
+    <main class="dashboard">
+        <div class="container">
+
+            <!-- Active Site Overview -->
+            <div class="card" style="margin: 0 5% 30px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h2>📍 Active Project Site</h2>
+                    <a href="site-setup.html" class="tag" style="text-decoration: none;">Edit Site Parameters</a>
+                </div>
+
+                <div class="grid grid-4" style="padding: 0;">
+                    <div>
+                        <p style="color: var(--muted); font-size: 0.85rem;">Infrastructure Type</p>
+                        <h3 id="infrastructureType">Hospital</h3>
+                    </div>
+                    <div>
+                        <p style="color: var(--muted); font-size: 0.85rem;">Location</p>
+                        <h3 id="siteLocation">Pune, Maharashtra</h3>
+                    </div>
+                    <div>
+                        <p style="color: var(--muted); font-size: 0.85rem;">Site Area</p>
+                        <h3 id="siteArea">5 Acres</h3>
+                    </div>
+                    <div>
+                        <p style="color: var(--muted); font-size: 0.85rem;">Expected Population</p>
+                        <h3 id="population">5,000</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Infrastructure Metrics -->
+            <div style="padding: 0 5% 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <h2>🏙️ Surrounding Infrastructure (Overpass API)</h2>
+                    <span class="tag">GET /api/infrastructure</span>
+                </div>
+                <p style="color: var(--muted); margin-bottom: 20px;">
+                    Live spatial survey of civic assets located within a 2,000m radius of the selected coordinates.
+                </p>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-title">Bus Stations</div>
+                    <div class="stat-value" id="busStations">Loading...</div>
+                    <div class="stat-icon">🚌</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-title">Hospitals</div>
+                    <div class="stat-value" id="hospitals">Loading...</div>
+                    <div class="stat-icon">🏥</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-title">Parks & Green</div>
+                    <div class="stat-value" id="parks">Loading...</div>
+                    <div class="stat-icon">🌳</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-title">Schools & Education</div>
+                    <div class="stat-value" id="schools">Loading...</div>
+                    <div class="stat-icon">🏫</div>
+                </div>
+            </div>
+
+            <!-- Quick Modules Access -->
+            <div style="padding: 30px 5% 10px;">
+                <h2>⚙️ Analytical Planning Modules</h2>
+                <p style="color: var(--muted);">Explore in-depth simulation modules on the Site Analysis page.</p>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h3>💰 Cost Estimator</h3>
+                    <p style="margin-top: 6px; color: var(--text-light); font-size: 0.9rem;">
+                        Automated multi-discipline infrastructure expenditure calculation via <code>POST /api/cost</code>.
+                    </p>
+                    <a href="analysis.html#costEstimator" style="display: inline-block; margin-top: 12px; color: var(--sage-dark); font-weight: 600;">
+                        Estimate Costs →
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🌱 Green City Planner</h3>
+                    <p style="margin-top: 6px; color: var(--text-light); font-size: 0.9rem;">
+                        Ecological impact scoring, tree canopy estimates, and CO₂ offset modeling via <code>POST /api/green-city</code>.
+                    </p>
+                    <a href="analysis.html#greenPlanner" style="display: inline-block; margin-top: 12px; color: var(--sage-dark); font-weight: 600;">
+                        Plan Green Space →
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🚨 Disaster Simulation</h3>
+                    <p style="margin-top: 6px; color: var(--text-light); font-size: 0.9rem;">
+                        Flood, fire, and emergency route bottleneck assessment via <code>POST /api/disaster</code>.
+                    </p>
+                    <a href="analysis.html#disasterSim" style="display: inline-block; margin-top: 12px; color: var(--sage-dark); font-weight: 600;">
+                        Assess Risks →
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📈 Impact Analysis</h3>
+                    <p style="margin-top: 6px; color: var(--text-light); font-size: 0.9rem;">
+                        Comprehensive multi-criteria sustainability and infrastructure compatibility modeling via <code>POST /api/impact</code>.
+                    </p>
+                    <a href="analysis.html#impactAnalysis" style="display: inline-block; margin-top: 12px; color: var(--sage-dark); font-weight: 600;">
+                        View Impact →
+                    </a>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📐 Autodesk Forma Layer</h3>
+                    <p style="margin-top: 6px; color: var(--text-light); font-size: 0.9rem;">
+                        Integration layer and OAuth configuration guide for connecting Autodesk Forma cloud projects.
+                    </p>
+                    <a href="analysis.html#formaSection" style="display: inline-block; margin-top: 12px; color: var(--sage-dark); font-weight: 600;">
+                        Forma Integration →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Smart City Planning & Analysis © <span id="currentYear"></span></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>

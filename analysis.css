@@ -1,0 +1,192 @@
+:root {
+    --primary: #648b79;
+    --primary-light: #dce9e2;
+    --muted: #71807a;
+    --danger: #d9534f;
+    --warning: #e6a23c;
+    --success: #67c23a;
+}
+
+.analysis-page {
+    padding: 35px 0;
+}
+
+.analysis-card {
+    margin-bottom: 24px;
+}
+
+.analysis-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.analysis-description {
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+.risk-box {
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.risk-low {
+    background: #e3f4e9;
+    border-left: 4px solid #67c23a;
+}
+
+.risk-medium {
+    background: #fff1d3;
+    border-left: 4px solid #e6a23c;
+}
+
+.risk-high {
+    background: #fde3e2;
+    border-left: 4px solid #d9534f;
+}
+
+.recommendation {
+    padding: 12px 16px;
+    border-left: 4px solid var(--primary);
+    background: var(--primary-light);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+/* Status Badges */
+.status,
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 4px 0;
+}
+
+.status-good,
+.analysis-status.good {
+    background: #dce9e2;
+    color: #3b6452;
+}
+
+.status-warning,
+.analysis-status.moderate {
+    background: #f7f2df;
+    color: #806f39;
+}
+
+.status-danger,
+.analysis-status.needs-improvement {
+    background: #f8eae4;
+    color: #925e49;
+}
+
+.status-indicator.loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 0.88rem;
+}
+
+/* Infrastructure Analysis Cards */
+.analysis-section {
+    margin-top: 35px;
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+.section-header p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.infrastructure-analysis-card {
+    position: relative;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.infrastructure-analysis-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.analysis-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.infrastructure-analysis-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+}
+
+.infrastructure-analysis-card .analysis-status {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.infrastructure-analysis-card p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* Form controls in cards */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group-sm label {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.form-group-sm input,
+.form-group-sm select {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+}
+
+/* Progress bar inside card */
+.progress-container {
+    margin: 12px 0;
+}
+
+.progress-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    font-weight: 500;
+}

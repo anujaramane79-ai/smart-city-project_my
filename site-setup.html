@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Site Setup | Smart City</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+
+        .setup-page {
+            min-height: 90vh;
+            padding: 50px 0;
+        }
+
+        .setup-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .setup-header h1 {
+            font-size: 2.3rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .setup-header p {
+            color: var(--muted);
+        }
+
+        .setup-card {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+        }
+
+        .setup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .infrastructure-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .infrastructure-option {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            background: white;
+            transition: 0.2s;
+        }
+
+        .infrastructure-option:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .infrastructure-option.selected {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .infrastructure-option .icon {
+            display: block;
+            font-size: 1.7rem;
+            margin-bottom: 5px;
+        }
+
+        .analyze-area {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .analyze-btn {
+            padding: 14px 35px;
+            font-size: 1rem;
+        }
+
+        .required {
+            color: #d9534f;
+        }
+
+        @media (max-width: 700px) {
+
+            .setup-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: auto;
+            }
+
+            .infrastructure-options {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .setup-card {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🌱 Smart City
+        </div>
+
+            <li>
+                <a href="index.html">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="site-setup.html" style="color: var(--sage-dark); font-weight: 700;">
+                    Site Setup
+                </a>
+            </li>
+
+            <li>
+                <a href="analysis.html">
+                    Analysis
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Site Setup -->
+
+    <main class="setup-page">
+
+        <div class="container">
+
+
+            <div class="setup-header">
+
+                <h1>
+                    Set Up Your Site
+                </h1>
+
+                <p>
+                    Enter basic information about the infrastructure
+                    you want to analyze.
+                </p>
+
+            </div>
+
+
+            <div class="setup-card">
+
+                <form id="siteSetupForm">
+
+
+                    <!-- Infrastructure -->
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            What are you planning?
+                            <span class="required">*</span>
+                        </label>
+
+                        <div class="infrastructure-options">
+
+
+                            <div
+                                class="infrastructure-option selected"
+                                data-type="Hospital">
+
+                                <span class="icon">🏥</span>
+
+                                Hospital
+
+                            </div>
+
+
+                            <div
+                                class="infrastructure-option"
+                                data-type="School">
+
+                                <span class="icon">🏫</span>
+
+                                School
+
+                            </div>
+
+
+                            <div
+                                class="infrastructure-option"
+                                data-type="Residential">
+
+                                <span class="icon">🏠</span>
+
+                                Residential
+
+                            </div>
+
+
+                            <div
+                                class="infrastructure-option"
+                                data-type="Commercial">
+
+                                <span class="icon">🏢</span>
+
+                                Commercial
+
+                            </div>
+
+
+                        </div>
+
+                        <input
+                            type="hidden"
+                            id="infrastructureType"
+                            value="Hospital">
+
+                    </div>
+
+
+                    <div class="setup-grid">
+
+
+                        <!-- Location -->
+
+                        <div class="form-group">
+
+                            <label for="location">
+
+                                Location
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="location"
+                                class="form-control"
+                                placeholder="e.g. Pune, Maharashtra"
+                                required>
+
+                        </div>
+
+
+                        <!-- Site Area -->
+
+                        <div class="form-group">
+
+                            <label for="siteAreaInput">
+
+                                Site Area
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="siteAreaInput"
+                                class="form-control"
+                                placeholder="e.g. 5"
+                                min="0"
+                                step="0.1"
+                                required>
+
+                        </div>
+
+
+                        <!-- Expected Population -->
+
+                        <div class="form-group">
+
+                            <label for="populationInput">
+
+                                Expected Users / Population
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="populationInput"
+                                class="form-control"
+                                placeholder="e.g. 5000"
+                                min="0">
+
+                        </div>
+
+
+                        <!-- Development Type -->
+
+                        <div class="form-group">
+
+                            <label for="developmentType">
+
+                                Development Type
+
+                            </label>
+
+                            <select
+                                id="developmentType"
+                                class="form-control">
+
+                                <option value="new">
+                                    New Development
+                                </option>
+
+                                <option value="existing">
+                                    Existing Site Improvement
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Additional Information -->
+
+                        <div class="form-group full-width">
+
+                            <label for="description">
+
+                                Additional Information
+
+                            </label>
+
+                            <textarea
+                                id="description"
+                                class="form-control"
+                                rows="4"
+                                placeholder="Describe any specific requirements, problems or goals..."></textarea>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Analyze -->
+
+                    <div class="analyze-area">
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary analyze-btn">
+
+                            🔍 Analyze This Site
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Smart City Planning & Analysis ©
+            <span id="currentYear"></span>
+        </p>
+
+    </footer>
+
+
+    <script src="js/main.js"></script>
+
+
+    <script>
+
+        // Infrastructure selection
+
+        const options =
+            document.querySelectorAll(
+                ".infrastructure-option"
+            );
+
+        const infrastructureInput =
+            document.getElementById(
+                "infrastructureType"
+            );
+
+
+        options.forEach(option => {
+
+            option.addEventListener(
+                "click",
+                () => {
+
+                    options.forEach(item => {
+                        item.classList.remove("selected");
+                    });
+
+                    option.classList.add("selected");
+
+                    infrastructureInput.value =
+                        option.dataset.type;
+
+                }
+            );
+
+        });
+
+
+        // Form submission
+
+        document
+            .getElementById("siteSetupForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                const siteData = {
+
+                    infrastructure:
+                        infrastructureInput.value,
+
+                    location:
+                        document.getElementById(
+                            "location"
+                        ).value,
+
+                    siteArea:
+                        document.getElementById(
+                            "siteAreaInput"
+                        ).value,
+
+                    population:
+                        document.getElementById(
+                            "populationInput"
+                        ).value,
+
+                    developmentType:
+                        document.getElementById(
+                            "developmentType"
+                        ).value,
+
+                    description:
+                        document.getElementById(
+                            "description"
+                        ).value
+
+                };
+
+
+                // Save information temporarily
+
+                localStorage.setItem(
+                    "smartCitySite",
+                    JSON.stringify(siteData)
+                );
+
+
+                // Go to site analysis page
+                window.location.href =
+                    "analysis.html";
+
+            });
+
+    </script>
+
+
+</body>
+
+</html>
